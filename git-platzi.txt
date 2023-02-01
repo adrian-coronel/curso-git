@@ -7,6 +7,8 @@ git config --global user.email <email>
 
 git add .
 
+ERROR CUANDO SE FUSIONAN 2 PROYECTOS NO RELACIONADOS
+git pull origin master --allow-unrelated-histories
 
 ---- Remover un cambio en STAGED ----
 git rm --cached <archivo>  
