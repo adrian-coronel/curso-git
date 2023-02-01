@@ -1,0 +1,117 @@
+
+---- Ver las versiones y ramas ----
+git log --all --graph --decorate --oneline
+
+---- CREAR UN ALIAS ----
+alias <palabra>="git log --all --graph --decarate --oneline" => Cuando ingrese arbolito se ejecutara esos comandos
+
+---- Usar TAGS ----
+git tag -a <nombreDelTag> -m "<mensaje>" <codigo commit>    =>  Ejemplo: git tag -a v0.1 -m "mensaje" gfgfhgshhgt4t34gv
+
+---- Ver TAGS ----
+git tag  => Forma corta
+git show-ref --tags  => Forma larga con commits
+
+---- ENVIAR TAGS AL REPO. REMOTO ----
+git push origin --tags
+
+---- ELIMINAR TAGS LOCAL ----
+git tag -d <nombreTAG>
+
+---- ELIMINAR TAGS EN GITHUB ----
+git push origin :refs/tags/<nombreDelTAG>
+
+
+---- Ver Ramas con más informacion ----
+git show-branch --all
+gitk  => NOS ABRE UN SOFTWARE DE GIT DONDE VEMOS EL HISTORIAL
+
+---- Enviar ramas a GITHUB ----
+git push origin <rama>
+
+
+
+
+ CONFIGURAR MULTIPLES COLABORADORES EN REPOSITORIO DE GITHUB (CLASE 25)
+
+Para permitir que alguien haga modificaciones en nuestro proyecto entramos
+en GITHUB, settings del repositorio, Collaborators y agregamos su email o nombre de usuario de github
+
+CUANDO SE TRABAJA EN GRUPO, SE HACE EN RAMAS
+
+
+---- Ignorar Archivos ----
+creamos un archivo ".gitignore" => Es una lista de los archivos que vamos a ignorar
+
+
+--- WEB EDITOR README.MD ---
+https://pandao.github.io/editor.md/en.html
+
+
+
+>>>>>>>>> Git Stash: Guardar cambios en memoria y recuperarlos después
+Basicamente vuelve a un estado anterior
+
+git stash  => Nos sirve para guardar cambios para después, Es una lista de estados que nos guarda
+algunos cambios que hicimos en Staging para poder cambiar de rama sin perder el trabajo que todavía no guardamos en un commit
+
+git stash list => Listar los stash
+git stash branch <nameBranch>   => Guarda el stash en la rama que creará
+git stash drop   => Elimina los stash
+
+
+
+>>>>>>>> Git Clean: limpiar tu proyecto de archivos no deseados
+
+git clean --dry-run  => Nos muestra una simulación de los archivos que va a borrar
+git clean -f   => Elimina los archivos, ecepto los trakeados y que los que se encuentran en GITIGNORE
+
+
+
+
+>>>>>>> Git cherry-pick: traer commits viejos al head de un branch (Es mala practica)
+Desde main:
+git cherry-pick <codigoCommitDeOtraRama>   => Nos sirve para traer los cambios realizados de un commit en especifico
+
+
+
+>>>>>>> Git Reset y Reflog: úsese en caso de emergencia
+
+git reflog  => Muestra absolutamente TODO los HEAD y commits.
+
+git reset --hard <codigoCommit}>   => Con esto traeremos el momento en que eliminamos el archivo
+git resert --soft <codigoCommit>  => Los mismo pero deja los cambios en STAGED
+
+>>>>>>> Reconstruir commits en Git con amend
+
+La situación es que si hicimos commit y derrepente se nos paso realizar algo, entonces
+lo que tenemos que hacer es, hacer lo que nos olvidamos, realizar el "git add <modificacion>"
+y lo siguiente:
+
+git commit --amend   => Une los cambios al commit ANTERIOR y te permite modificar el mensaje
+
+
+
+
+>>>>>>>> Buscar en archivos y commits de Git con Grep y log
+git grep <palabra>  => Nos muestra la ubicación de los archivos en que hemos usado esa PALABRA
+git grep -n <palabra>  => Nos muestra también la linea
+git grep -c <palabra>  => Nos muestra la cantidad de veces en que se repite en en un achivo
+ BUSCAR PALABRAS EN COMMITS
+git log -S <palabra>
+
+
+
+>>>>>>> Comandos y recursos colaborativos en Git y GitHub
+git shortlog --all => Ver todas las commits que han hecho las personas
+git shortlog --sn    => Solo que quienes hicieron commits
+git shortlog --all -sn --no-merges  => Quienes hicieron commits, sin incluir los MERGES
+
+GUARDAR UN ALIAS GLOBAL: git config --global alias.<palabraAlias> "<COMANDO>"
+
+git blame <archivo>   => Ver quienes modificaron un archivo
+git blame <archivo> -c  => Lo muestra mejor indentado
+git blame <archivo> -L<numeroLineaInicio>,<LineaFinal>  => Ejemplo   "git blame index.html -L10,40"
+
+git branch -r   => VEMOS LAS RAMAS REMOTAS
+git branch -a   => VEMOS TODAS

@@ -1,0 +1,7 @@
+
+Github pages nos hostea nuestro repositorio de github para poder subirla a la web, los pasos son los siguiente:
+Si entramos a https://pages.github.com/ podremos ver cuales son los pasos
+luego de realizar el push y aver subido nuestro repo local al remoto, 
+tendremos que dirigirnos a "settings(del repositorio)" >> Pages >> En branch Indica que rama usará y le damos en save
+
+Para verlo ingresaremos como "<nombreRepositorio>.github.io/index.html" o "<nombreDeMiUser>.github.io/<nombreREPO>/index.html"

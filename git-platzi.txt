@@ -1,0 +1,110 @@
+---- CONFIGURAR GIT ----
+git config   => Todas las configuraciones para git
+git config --list  => Ver las configuraciones por defecto de GIT
+git config --list -show-origin  => Ver donde se guardan las configuraciones
+git config --global user.name "<nombre apellidos>"
+git config --global user.email <email>
+
+git add .
+
+
+---- Remover un cambio en STAGED ----
+git rm --cached <archivo>  
+
+
+---- Realizar commit con Mensaje ----
+git commit <archivo> -m "<mensaje>"
+git commit -am "<mensaje>"   => Realizar un add y commit de forma facil,(solo funciona con archivos que ya han pasado por staging anteriormente)
+
+
+---- Ver los cambios apartir del commit ----
+git log --stat
+
+---- Ver los cambios ocurridos en un Archivo ----
+git show <archivo> => Lo de rojo es lo anterior y lo de verde es lo actual
+git diff <codigoDelCommit> <codigoDelCommit> => 
+						Ejemplo: 
+git diff b3333d12a5102655231481b63c831840651bc551 f83ba42b7784cf0af1356bee567e83cfc293c631
+
+
+---- Como volver a una version ANTERIOR ----
+git reset <codigoDelCommitPaVolver> --hard   => TODO vuelve al estado anterior(Cuidado)
+git reset <codigoDelCommitPaVolver> --soft   => Lo que estaba en STAGED sigue ahi
+git reset --soft: Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
+git reset --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de staging se borra del historial.
+
+git rm <>   => Elimina archivos de Git sin eliminar su historial de versiones, por lo que podemos recuperar archivos 
+git rm <> --cached => Elimina archivos del repositorio local y area de staging, pero los mantiene en el disco duro
+git rm <> --force  => Elimina lso archivos git y del disco duro, pero de igual forma podremos acceder al registro de commits  
+
+
+
+---- Como VER la versión anterior de un archivo ----
+git checkout <codigoCommit>    => Podremos realizar un commit si queremos quedarnos con la version anterior
+git checkout <master/main>   => Para volver con nuestra versión actual
+
+
+---- Remover un cambio de STAGED ----
+git reset HEAD             => Remover todo los cambios
+git reset HEAD <archivo>   => Remover un cambio en especifico
+
+
+---- Crear rama y cambiar a ella ----
+git branch <nombreRamaCrear>
+git checkout <nombreRamaCreada> => Cambiar de rama
+
+
+---- Fusionar ramas con merge ----(DEBO ESTAR EN MAIN/MASTER)
+git merge <rama>
+
+
+---- Que hace cuando ocurre un conflicto ----
+Un conflicto en git puede ser que se realizo la misma modificacion desde diferentes ramas y se realiza un merge
+En mi caso como tengo VSCode como editor por defecto me lo abrio y me pidio aceptar uno de los 2 cambios, otra cosa es que 
+puedo no aceptar ninguno y cambiarlo de diferente forma
+
+
+---- Conectar a un repositorio Remoto ----
+Luego de crear el repositorio en github copiamos el link HTTPS del repositorio
+
+git remote add origin <url>
+git remote -v  => Muestra vervalmente que tenemos un origin para hacer un 'fech' o un 'push'f
+
+
+ANTES DE HACER ALGO, DEBO TRAERME LO DE ORIGIN
+git pull origin main/master --allow-unrelated-histories   => Practicamente es hacer un merge con el remoto a mi local
+LUEGO
+git push origin main
+
+---- Traer los cambios remotos al local ----
+git pull origin main/master
+
+
+
+	---- CONFIGURACION DE SSH ----
+
+---- LLAVES PUBLICAS Y PRIVADAS ----(video 21) => LA LLAVE ES POR PERSONA, NO POR REPOSITORIO
+Nos ubicamos en el home de nuestra computadora(C:/User/tuUser) y escribimo ssh-keygen -t rsa -b 4096 -C
+
+Enter file in which to save the key (/c/Users/XCY31/.ssh/id_rsa):  => Lugar donde se guardara, dar enter
+
+Enter passphrase (empty for no passphrase):  => Contraseña textual, le di  "miryam2003".
+
+La llave publica es la .pub , la abro con VSC, verificamos si el servicio de ssh esta corriendo(necesario para crusar llaves con el remoto),
+entonces escribimos "eval $(ssh-agent -s)",
+
+---- Agregar la llave privada al sistema ----
+ssh-add <ruta de id_rsa privada>  => Ejemplo:  ssh-add ~/.ssh/id_rsa
+
+
+----- CONECTAR A GITHUB CON SSH -----
+Vamos a Settings en GITHUB, luego en SSH and GPG Keys, new Key SSH, nos mostrará para ingresar un titulo y la key abajo. 
+Ahora cuando copiemos el enlace del repositorio usaremos SSH, tenemos que cambiar el origin del proyecto, 
+
+git remote -v  => Ver en enlace
+
+---- Cambiar url origin ----
+git remote set-url origin <urlSSH>
+
+
+SIEMPRE ANTES DE HACER UN COMMIT EN GIT, DEBEMOS TRAER LAS ACTUALIZACIONES DEL REPOSITORIO REMOTO
