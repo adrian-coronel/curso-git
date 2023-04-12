@@ -1,0 +1,8 @@
+- Para hacer el download de un branch de remoto primero tienes que asegurarte que exista.
+- Para ver los branches de remoto simplemente tienes que hacer:
+
+git branch -r
+
+- Luego haces el checkout al branch que desees. Te hará el download y te pondrá en la branch que has indicado:
+
+git checkout remote-branch
