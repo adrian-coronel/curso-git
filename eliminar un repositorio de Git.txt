@@ -1,0 +1,4 @@
+Git guarda todos los cambios realizados en el directorio .git de la carpeta donde se el repositorio. Para eliminarlo simplemente hay que borrar esa carpeta.
+
+cd carpeta/
+rm -rf .git
