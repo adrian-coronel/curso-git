@@ -1,3 +1,6 @@
+Hacer GIT PULL para bajar todas las bajar las nuevas ramas.
+=>   GIT PULL
+
 - Para hacer el download de un branch de remoto primero tienes que asegurarte que exista.
 - Para ver los branches de remoto simplemente tienes que hacer:
 
