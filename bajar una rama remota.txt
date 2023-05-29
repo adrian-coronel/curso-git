@@ -6,6 +6,6 @@ Hacer GIT PULL para bajar todas las bajar las nuevas ramas.
 
 git branch -r
 
-- Luego haces el checkout al branch que desees. Te hará el download y te pondrá en la branch que has indicado:
+- El siguiente comando creara una rama basada en la rama del remoto
 
-git checkout remote-branch
+git checkout -b <name-rama> origin/<name-rama>
